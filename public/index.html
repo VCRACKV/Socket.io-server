@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SocketServer</title>
+    </head>
+    <body>
+        <h1>Hola bueno dia buen señor.</h1>
+        <script src="socket.io/socket.io.js"></script>
+        <script>
+            let socket = io();
+            socket.on('connect', function(){
+                console.log("Conectado al servidor");
+            });
+
+            socket.on('disconnect', function(){
+                console.log("Desconectado del servidor");
+            });
+
+            socket.on('mensaje', function(playload){
+                console.log("Hola", playload['admin']);
+            });
+
+            socket.emit('mensaje', { nombre: "Ander"});
+        </script>
+    </body>
+
+</html>
